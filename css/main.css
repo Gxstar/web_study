@@ -1,0 +1,28 @@
+@media only screen and (min-width: 768px) {
+	.container{
+		max-width: 900px;
+	}
+}
+body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 { 
+	font-family: Microsoft YaHei,'宋体' , Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;
+}
+.info{
+	font-size: 14px;
+	color: #aaa;
+}
+.car{
+	width:200px;
+	padding:0 10px;
+	float: left;
+}
+#carousel{
+	transition: margin-left 2s;
+}
+.box{
+	overflow: hidden;
+	border:1px solid #ddd;
+	border-top:none;
+	border-radius: 4px;
+	padding-top: 5px;
+}
+
