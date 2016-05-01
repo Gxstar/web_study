@@ -14,13 +14,23 @@
          <script src="//cdn.bootcss.com/html5shiv/r29/html5.js"></script>
          <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
       	<![endif]-->
+      	<!--google analytics-->
+      	<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+			ga('create', 'UA-77160349-1', 'auto');
+			ga('send', 'pageview');
+		</script>
 	</head>
 	<body>
 		<div class="container">
 			<!--头部-->
 			<header>
-				<div class="hidden-xs header">
-					<nav>
+				<!--正常导航-->
+				<hgroup class="hidden-xs header">
+					<nav class="">
 						<ul class="nav nav-pills pull-right">
 							<li class="active"><a href="/">首页</a></li>
 							<li><a href="/dairy">文章</a></li>
@@ -40,7 +50,40 @@
 					</nav>
 					<h3><a href="/"><img src="img/logo.png"/></a></h3>
 					<hr /><!--分割-->
-				</div>
+				</hgroup>
+				<!--移动端导航-->
+				<hgroup class="visible-xs">
+					<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#head-list">
+								<span class="sr-only">切换导航</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+							<a href="#" class="navbar-brand">Gxstar的小站</a>
+						</div>
+						<div class="collapse navbar-collapse" id="head-list">
+							<ul class="nav navbar-nav">
+								<li class="active"><a href="/">首页</a></li>
+								<li><a href="/dairy">文章</a></li>
+								<li><a href="#album">相册</a></li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						               	其他 
+						               <b class="caret"></b>
+						            </a>
+						            <ul class="dropdown-menu">
+						            	<li><a href="/anime">动漫</a></li>
+						            	<li><a href="/game">游戏</a></li>
+						            	<li><a href="/sports">体育</a></li>
+						            </ul>
+								</li>
+						</ul>
+						</div>
+					</nav>
+					<div style="margin:50px;"></div>
+				</hgroup>
 			</header>
 			
 			<!--主体-->
@@ -48,8 +91,8 @@
 				<!--左边-->
 				<div class="col-md-8">
 					<!--文章-->
-					<div id="article">
-						<div class="row">
+					<section id="article">
+						<article class="row">
 							<div class="col-md-5 col-sm-5">
 								<a href="http://blog.sina.com.cn/s/blog_6e20b7900102wlrs.html?tj=1" target="_blank">
 									<img src="img/article/1.jpg" class="img-responsive img-rounded "/>
@@ -67,9 +110,9 @@
 									</a>
 								</p>
 							</div>
-						</div>
+						</article>
 						<hr />
-						<div class="row">
+						<article class="row">
 							<div class="col-md-5 col-sm-5">
 								<a href="http://blog.sina.com.cn/s/blog_58cb8a290102wg5b.html?tj=1" target="_blank">
 									<img src="img/article/2.jpg" class="img-responsive img-rounded "/>
@@ -87,29 +130,30 @@
 									</a>
 								</p>
 							</div>
-						</div>
+						</article>
 						<hr />
-						<div class="row">
-						<div class="col-md-5 col-sm-5">
-							<a href="http://blog.sina.com.cn/s/blog_48bb0d010102wdsr.html" target="_blank">
-								<img src="img/article/3.jpg" class="img-responsive img-rounded "/>
-							</a>
-						</div>
-						<div class="col-md-7 col-sm-7">
-							<a href="http://blog.sina.com.cn/s/blog_48bb0d010102wdsr.html" target="_blank">
-								<h5><strong>丝绸之路运送的主要商品竟然不是丝绸</strong></h5>
-							</a>
-							<p class="info"><author><a href="http://blog.sina.com.cn/shanzhiqiang" target="_blank">单之蔷</a></author><span> • </span><time>2016-01-13</time></p>
-							<p>其实丝绸之路运送的商品有许多，但丝绸很少，尤其是汉代以后。原因是在汉代，养蚕和制丝技术已经传到了丝路上的国家，他们已经掌握了这项技术，所产丝绸的品质不亚于中国...</p>
-							<p class="info pull-right hidden-xs">
+						<article class="row">
+							<div class="col-md-5 col-sm-5">
 								<a href="http://blog.sina.com.cn/s/blog_48bb0d010102wdsr.html" target="_blank">
-									详细
+									<img src="img/article/3.jpg" class="img-responsive img-rounded "/>
 								</a>
-							</p>
-						</div>
-					</div>
-					</div>
+							</div>
+							<div class="col-md-7 col-sm-7">
+								<a href="http://blog.sina.com.cn/s/blog_48bb0d010102wdsr.html" target="_blank">
+									<h5><strong>丝绸之路运送的主要商品竟然不是丝绸</strong></h5>
+								</a>
+								<p class="info"><author><a href="http://blog.sina.com.cn/shanzhiqiang" target="_blank">单之蔷</a></author><span> • </span><time>2016-01-13</time></p>
+								<p>其实丝绸之路运送的商品有许多，但丝绸很少，尤其是汉代以后。原因是在汉代，养蚕和制丝技术已经传到了丝路上的国家，他们已经掌握了这项技术，所产丝绸的品质不亚于中国...</p>
+								<p class="info pull-right hidden-xs">
+									<a href="http://blog.sina.com.cn/s/blog_48bb0d010102wdsr.html" target="_blank">
+										详细
+									</a>
+								</p>
+							</div>
+						</article>
+					</section>
 					<hr />
+					<!--动漫-->
 					<div class="row">
 						<nav class="header">
 							<ul class="nav nav-tabs">
@@ -119,37 +163,37 @@
 						</nav>
 						<div id="myTabContent" class="tab-content">
 							<ul class="list-unstyled box tab-pane fade in active" id="animation"><!--动画-->
-								<li class="col-md-4 col-xs-6">
+								<li class="col-md-4 col-sm-4 col-xs-6">
 									<a href="#">
 										<img src="img/anime/syd.jpg" class="img-responsive img-rounded "/>
 										<p style="text-align: center;">妄想学生会</p>
 									</a>
 								</li>
-								<li class="col-md-4 col-xs-6">
+								<li class="col-md-4 col-sm-4 col-xs-6">
 									<a href="#">
 										<img src="img/anime/nonnon.jpg" class="img-responsive img-rounded"/>
 										<p style="text-align: center;">悠哉日常大王</p>
 									</a>
 								</li>
-								<li class="col-md-4 col-xs-6">
+								<li class="col-md-4 col-sm-4 col-xs-6">
 									<a href="#">
 										<img src="img/anime/kancolle.jpg" class="img-responsive img-rounded"/>
 										<p style="text-align: center;">舰队collection</p>
 									</a>
 								</li>
-								<li class="col-md-4 col-xs-6">
+								<li class="col-md-4 col-sm-4 col-xs-6">
 									<a href="#">
 										<img src="img/anime/5.jpg" class="img-responsive img-rounded"/>
 										<p style="text-align: center;">秒速五厘米</p>
 									</a>
 								</li>
-								<li class="col-md-4 col-xs-6">
+								<li class="col-md-4 col-sm-4 col-xs-6">
 									<a href="#">
 										<img src="img/anime/kyokainokanata.jpg" class="img-responsive img-rounded"/>
 										<p style="text-align: center;">境界的彼方</p>
 									</a>
 								</li>
-								<li class="col-md-4 col-xs-6">
+								<li class="col-md-4 col-sm-4 col-xs-6">
 									<a href="anime/">
 										<img src="img/anime/railgun.jpg" class="img-responsive img-rounded"/>
 										<p style="text-align: center;">某科学的超电磁炮</p>
@@ -221,16 +265,7 @@
 								</fieldset>
 							</form>
 						</div>
-					</div>
-					<!--时间-->
-					<div class="panel panel-default">
-						<div class="panel-heading">当前时间</div>
-						<div class="panel-body">
-							<span id="date"></span>
-							<span id="day"></span>
-							<span id="time"></span>
-						</div>
-					</div>
+					</div>					
 					<!--天气-->
 					<div class="panel panel-default">
 						<div class="panel-heading">天气</div>
@@ -238,7 +273,7 @@
 							<div class="row">
 								<!--天气图标-->
 								<div class="col-md-6">
-									<img src="" class="img-responsive" id="weaimg" alt="天气情况"/>
+									<img src="img/loading.gif" class="img-responsive" id="weaimg" alt="天气情况"/>
 									<div class="info">更新时间:<span id="updatetime"></span></div>
 								</div>
 								<!--天气信息-->
@@ -263,6 +298,15 @@
 									</div>
 								</div>
 							</div>
+						</div>
+					</div>
+					<!--时间-->
+					<div class="panel panel-default">
+						<div class="panel-heading">当前时间</div>
+						<div class="panel-body">
+							<span id="date"></span>
+							<span id="day"></span>
+							<span id="time"></span>
 						</div>
 					</div>
 				</div>

@@ -4,7 +4,7 @@ $(function(){
 	})
 	
 	//图片轮播
-	var t1=setInterval(carousel,'3000');
+	var t1=setInterval(carousel,'5000');
 	function carousel(){
 		var car=$("#carousel");
 		var left=car.css("margin-left");
