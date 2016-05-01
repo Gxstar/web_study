@@ -79,7 +79,7 @@
 						            	<li><a href="/sports">体育</a></li>
 						            </ul>
 								</li>
-						</ul>
+							</ul>
 						</div>
 					</nav>
 					<div style="margin:50px;"></div>
@@ -154,7 +154,7 @@
 					</section>
 					<hr />
 					<!--动漫-->
-					<div class="row">
+					<section>
 						<nav class="header">
 							<ul class="nav nav-tabs">
 								<li class="active"><a href="#animation" data-toggle="tab">动画</a></li>
@@ -219,11 +219,11 @@
 								</li>
 							</ul>
 						</div>
-					</div>
+					</section>
 					<!--相册-->
 					<hr />
 					<h3 class="text-primary" id="album">相册</h3>
-					<div class="row" style="overflow: hidden;">
+					<section style="overflow: hidden;">
 						<ul id="carousel" class="list-unstyled" style="width:1800px;margin-left: 0px;">
 							<li>
 								<a href="img/back/1.jpg" target="_blank"><img src="img/back/1.jpg" class="car img-responsive img-rounded"/></a>
@@ -241,7 +241,7 @@
 								<a href="img/back/9.jpg" target="_blank"><img src="img/back/9.jpg" class="car img-responsive img-rounded"/></a>
 							</li>
 						</ul>
-					</div>
+					</section>
 					<hr />
 				</div>
 				<!--右边-->
@@ -269,7 +269,7 @@
 					<!--天气-->
 					<div class="panel panel-default">
 						<div class="panel-heading">天气</div>
-						<div class="panel-body text-primary">							
+						<div class="panel-body text-primary">
 							<div class="row">
 								<!--天气图标-->
 								<div class="col-md-6">
@@ -296,6 +296,15 @@
 									<div class="row">
 										<span class="col-md-12" id="wind"></span>
 									</div>
+								</div>
+							</div>
+							<hr />
+							<div class="row">
+								<div class="col-md-8">
+									<input type="text" id="incityname" class="form-control" placeholder="城市名，如：北京" />
+								</div>
+								<div class="col-md-4">
+									<input type="submit" id="inquire" name="inquire" class="btn btn-info" value="查询"/>
 								</div>
 							</div>
 						</div>

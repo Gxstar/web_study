@@ -4,7 +4,7 @@ $(function(){
 	})
 	
 	//图片轮播
-	var t1=setInterval(carousel,'5000');
+	var t1=setInterval(carousel,'8000');
 	function carousel(){
 		var car=$("#carousel");
 		var left=car.css("margin-left");
@@ -39,6 +39,11 @@ $(function(){
 	
 	//显示城市天气预报
 	showcity();
+	//手动查询城市天气
+	$("#inquire").click(function(){
+		var incity=$("#incityname").val();
+		showweather(incity);
+	})
 })
 
 //计算星期几
@@ -78,51 +83,60 @@ function showcity(){//查询当前城市名称
 			async:true,
 			data:postip,
 			success: function(data){
-				showweather(data);
+				findcity(data);
 			}
 		});
 	})
 }
-function showweather(result){//根据城市名称天气查询
+function findcity(result){
 	var obj=eval('('+result+')');
 	var cwea=obj.retData.city;
-	document.getElementById("city").innerHTML=obj.retData.province+"省"+cwea+"市";
+	showweather(cwea);
+}
+function showweather(cwea){//根据城市名称天气查询
+	var result=cwea;
 	$.ajax({
 		type:"post",
 		url:"getweather.php",
 		async:true,
-		data:cwea,
+		data:result,
 		success:function(data){
 			var wea=eval('('+data+')');
-			var weainfo=wea.retData.weather;
-			$('#temMin').html(wea.retData.l_tmp+"℃");
-			$('#temMax').html(wea.retData.h_tmp+"℃");
-			$('#weainfo').html(weainfo);
-			$('#wind').html(wea.retData.WS);
-			$('#updatetime').html(wea.retData.time);
-			switch (weainfo){
-				case "阴":
-					$("#weaimg").attr('src','img/weather/5.png');
-					break;
-				case "小雨":case "中雨":case "大雨":case "暴雨":case "大暴雨":case "阵雨":case "特大暴雨":
-				case "小到中雨":case "中到大雨":case "大到暴雨":case "暴雨到大暴雨":case "大暴雨到特大暴雨":
-					$("#weaimg").attr('src','img/weather/1.png');
-					break;
-				case "雾":case "霾":
-					$("#weaimg").attr('src','img/weather/2.png');
-					break;
-				case "多云":
-					$("#weaimg").attr('src','img/weather/3.png');
-					break;
-				case "晴":
-					$("#weaimg").attr('src','img/weather/6.png');
-					break;
-				case "雷阵雨":case "雷阵雨伴有冰雹":
-					$("#weaimg").attr('src','img/weather/7.png');
-					break;
-				default:
-					$("#weaimg").attr('src','img/weather/3.png');
-					break;
+			if(wea.errNum!=0){
+				alert("城市输入错误");
+			}
+			else{
+				document.getElementById("city").innerHTML=wea.retData.city+"市";
+				var weainfo=wea.retData.weather;
+				$('#temMin').html(wea.retData.l_tmp+"℃");
+				$('#temMax').html(wea.retData.h_tmp+"℃");
+				$('#weainfo').html(weainfo);
+				$('#wind').html(wea.retData.WS);
+				$('#updatetime').html(wea.retData.time);
+				switch (weainfo){
+					case "阴":
+						$("#weaimg").attr('src','img/weather/5.png');
+						break;
+					case "小雨":case "中雨":case "大雨":case "暴雨":case "大暴雨":case "阵雨":case "特大暴雨":
+					case "小到中雨":case "中到大雨":case "大到暴雨":case "暴雨到大暴雨":case "大暴雨到特大暴雨":
+						$("#weaimg").attr('src','img/weather/1.png');
+						break;
+					case "雾":case "霾":
+						$("#weaimg").attr('src','img/weather/2.png');
+						break;
+					case "多云":
+						$("#weaimg").attr('src','img/weather/3.png');
+						break;
+					case "晴":
+						$("#weaimg").attr('src','img/weather/6.png');
+						break;
+					case "雷阵雨":case "雷阵雨伴有冰雹":
+						$("#weaimg").attr('src','img/weather/7.png');
+						break;
+					default:
+						$("#weaimg").attr('src','img/weather/3.png');
+						break;
+				}
 			}
 		}
 	});
