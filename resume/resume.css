@@ -1,0 +1,61 @@
+/*全局*/
+*{
+	font-family: "微软雅黑";
+	margin:0;
+	padding:0;
+}
+@font-face {
+ font-family: 'Nunito-Bold';
+ src: url('/fonts/Nunito-Bold.ttf');
+} 
+/*移动响应*/
+@media only screen and (min-width: 100px) and (max-width: 640px) {
+	.headLogo img{
+		margin-top: 5em;
+		width: 30%;;
+	}
+	.hiddensm{/*移动端隐藏点状导航*/
+		display: none !important;
+	}
+}
+
+
+/*头部*/
+.header{
+	background-color: darkseagreen;
+	text-align: center;
+}
+.header h1{
+	padding-top: 0.5em;
+	font-family: 'Nunito-Bold';
+	color: #DDDDDD;
+}
+.imgCircle{
+	border-radius: 50%;
+	width:9%;
+}
+.headLogo img{
+	margin-top: 7em;
+}
+
+
+/*侧边圆点导航*/
+#spotNav{
+	position: fixed;
+	top: 40%;
+	right:17px;
+	color: #6c6c6c;
+}
+#spotNav li{
+	list-style-type: none;
+	text-decoration: none;
+}
+#spotNav span{
+	display: block;
+	width: 6px;
+	height: 6px;
+	border: 1px solid #6c6c6c;
+	background-color: #6C6C6C;
+	border-radius: 50%;
+	margin:16px 0;
+}
