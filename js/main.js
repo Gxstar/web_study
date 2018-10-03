@@ -2,7 +2,17 @@ $(function(){
 	$("form").click(function(e){
 		e.preventDefault();
 	})
-	
+	$.ajax({//获取当前城市名称
+			type:"get",
+			url:"getinfo.php",
+			async:true,			
+			success: function(data){
+				var obj=eval('('+data+')');
+				$("#test").append(obj.data.city);
+				showweather(obj.data.city);
+		}
+	});
+
 	//图片轮播
 	var t1=setInterval(carousel,'8000');
 	function carousel(){
@@ -22,7 +32,7 @@ $(function(){
 	}
 	
 	//	显示时间(试试原生js)
-	var t2=setInterval(showtime,'100');
+	var t2=setInterval(showtime,'1000');
 	function showtime(){
 		var ndate=document.getElementById("date");
 		var nday=document.getElementById("day");
@@ -37,8 +47,7 @@ $(function(){
 		ntime.innerText=mydate.toLocaleTimeString();
 	}
 	
-	//显示城市天气预报
-	showcity();
+
 	//手动查询城市天气
 	$("#inquire").click(function(){
 		var incity=$("#incityname").val();
@@ -73,26 +82,7 @@ var daytoday=function(a){
 	}
 	return b;
 }
-function showcity(){//查询当前城市名称
-	var postip;
-	$.getJSON("http://chaxun.1616.net/s.php?type=ip&output=json&callback=?&_=",function(result,status){
-		postip=result.Ip;//获取当前ip
-		$.ajax({//获取当前城市名称
-			type:"post",
-			url:"getcity.php",
-			async:true,
-			data:postip,
-			success: function(data){
-				findcity(data);
-			}
-		});
-	})
-}
-function findcity(result){
-	var obj=eval('('+result+')');
-	var cwea=obj.retData.city;
-	showweather(cwea);
-}
+
 function showweather(cwea){//根据城市名称天气查询
 	var result=cwea;
 	$.ajax({
@@ -102,41 +92,17 @@ function showweather(cwea){//根据城市名称天气查询
 		data:result,
 		success:function(data){
 			var wea=eval('('+data+')');
-			if(wea.errNum!=0){
+			if(wea.showapi_res_code!=0){
 				alert("城市输入错误");
 			}
 			else{
-				document.getElementById("city").innerHTML=wea.retData.city+"市";
-				var weainfo=wea.retData.weather;
-				$('#temMin').html(wea.retData.l_tmp+"℃");
-				$('#temMax').html(wea.retData.h_tmp+"℃");
+				document.getElementById("city").innerHTML=wea.showapi_res_body.cityInfo.c3;
+				var weainfo=wea.showapi_res_body.now.weather;
+				$('#temNow').html(wea.showapi_res_body.now.temperature+"℃");
 				$('#weainfo').html(weainfo);
-				$('#wind').html(wea.retData.WS);
-				$('#updatetime').html(wea.retData.time);
-				switch (weainfo){
-					case "阴":
-						$("#weaimg").attr('src','img/weather/5.png');
-						break;
-					case "小雨":case "中雨":case "大雨":case "暴雨":case "大暴雨":case "阵雨":case "特大暴雨":
-					case "小到中雨":case "中到大雨":case "大到暴雨":case "暴雨到大暴雨":case "大暴雨到特大暴雨":
-						$("#weaimg").attr('src','img/weather/1.png');
-						break;
-					case "雾":case "霾":
-						$("#weaimg").attr('src','img/weather/2.png');
-						break;
-					case "多云":
-						$("#weaimg").attr('src','img/weather/3.png');
-						break;
-					case "晴":
-						$("#weaimg").attr('src','img/weather/6.png');
-						break;
-					case "雷阵雨":case "雷阵雨伴有冰雹":
-						$("#weaimg").attr('src','img/weather/7.png');
-						break;
-					default:
-						$("#weaimg").attr('src','img/weather/3.png');
-						break;
-				}
+				$('#wind').html(wea.showapi_res_body.now.wind_direction);
+				$('#updatetime').html(wea.showapi_res_body.now.temperature_time);
+				$("#weaimg").attr('src',wea.showapi_res_body.now.weather_pic);
 			}
 		}
 	});
