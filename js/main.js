@@ -3,13 +3,21 @@ $(function(){
 		e.preventDefault();
 	})
 	$.ajax({//获取当前城市名称
-			type:"get",
+			type:"post",
 			url:"getinfo.php",
+			data:returnCitySN["cip"],
 			async:true,			
 			success: function(data){
 				var obj=eval('('+data+')');
-				$("#test").append(obj.data.city);
-				showweather(obj.data.city);
+				if (obj.data.county!="XX") {
+					showweather(obj.data.county);
+				}
+				else if(obj.data.city!="XX"){
+					showweather(obj.data.city);
+				}
+				else{
+					showweather(obj.data.region);
+				}
 		}
 	});
 
