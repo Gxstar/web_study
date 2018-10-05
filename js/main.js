@@ -100,7 +100,7 @@ function showweather(cwea){//根据城市名称天气查询
 		data:result,
 		success:function(data){
 			var wea=eval('('+data+')');
-			if(wea.showapi_res_code!=0){
+			if(wea.showapi_res_body.ret_code=="-1"){
 				alert("城市输入错误");
 			}
 			else{
